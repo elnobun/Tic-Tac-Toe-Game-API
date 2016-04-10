@@ -1,0 +1,31 @@
+Project Name: Tic-Tac-Toe Game App
+
+DESIGN DECISIONS:
+
+
+-----Game Model:-----
+
+* In Game NDB Model, in model.py, a field to store the board in Game was added.
+the Game Property: PickleProperty was used because it allowed
+me to store a Python List in the datastore which seemed like the simplest way
+to record the state of the board, and store it in the Datastore.
+
+* Board size of every new game is restricted to 3x3 for easy play and assessment.
+
+* I also added nexMove, player_x, player_o, and winner KeyProperties to the Game model
+to keep track of which User was either 'X' or 'O' and who's move it was, and whose move is next.
+
+* A 'game_over' flag was created to mark completed games.
+
+
+-----Score Model:-----
+
+* The Score model was modified to record result of the game. The result field can contain three values:
+'player_x', 'player_o' and 'draw'. Finished game will either have value of winner or draw properties.
+
+* I decided to store games that finish in draw in a StringField in Score model with three possible
+ values: player_x, player_o, and draw. This is because storing finished games in a BooleanField that ends
+ in a draw, is quite difficult.
+
+* Player with 3 points, get a win. Player with 1 point get a tie, and player with 0 point losses.
+
