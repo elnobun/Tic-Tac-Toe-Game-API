@@ -21,7 +21,7 @@ Google Cloud Endpoints, App Engine, and Python.
 3. Run the application, and ensure it's running by visiting your local server's
    admin console (by default [localhost:8080/_ah/admin][6].)
 4. Test your Endpoints by visiting the Google APIs Explorer: 
-  [localhost:8080/_ah/api/explorer][7]
+  [localhost:8080/_ah/api/explorer][7] or `<PROJECT_ID>/_ah/api/explorer`
 5. (Optional) Generate your client library(ies) with the endpoints tool. 
     Deploy your application.
 
