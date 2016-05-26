@@ -12,7 +12,7 @@ to record the state of the board, and store it in the Datastore.
 
 * Board size of every new game is restricted to 3x3 for easy play and assessment.
 
-* I also added nexMove, player_x, player_o, and winner KeyProperties to the Game model
+* I also added `nexMove`, `player_x`, `player_o`, and `winner` KeyProperties to the Game model
 to keep track of which User was either 'X' or 'O' and who's move it was, and whose move is next.
 
 * A 'game_over' flag was created to mark completed games.
