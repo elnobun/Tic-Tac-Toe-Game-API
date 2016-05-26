@@ -6,7 +6,7 @@ DESIGN DECISIONS:
 -----Game Model:-----
 
 * In Game NDB Model, in model.py, a field to store the board in Game was added.
-the Game Property: PickleProperty was used because it allowed
+the Game Property: `PickleProperty` was used because it allowed
 me to store a Python List in the datastore which seemed like the simplest way
 to record the state of the board, and store it in the Datastore.
 
