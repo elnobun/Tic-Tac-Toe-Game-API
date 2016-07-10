@@ -5,7 +5,7 @@ move game logic to another file. Ideally the API will be simple, concerned
 primarily with communication to/from the API's users."""
 
 
-import logging
+# import logging
 import endpoints
 from protorpc import remote, messages
 from google.appengine.api import memcache, mail
@@ -14,7 +14,7 @@ from google.appengine.ext import ndb
 
 from models import User, Game, Score
 from forms import StringMessage, NewGameForm, GameForm, GameForms, MakeMoveForm,\
-    ScoreForms, UserForm, UserForms
+    ScoreForms, UserForms
 from utils import get_by_urlsafe, check_full, check_winner
 
 # - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
@@ -172,7 +172,7 @@ class TicTacToeApi(remote.Service):
                       path='scores',
                       name='get_scores',
                       http_method='GET')
-    def get_scores(self, request):
+    def get_scores(self):
         """Return all scores"""
         return ScoreForms(items=[score.to_form() for score in Score.query()])
 
@@ -213,7 +213,7 @@ class TicTacToeApi(remote.Service):
                       path='games/finished_games',
                       name='get_finished_games',
                       http_method='GET')
-    def get_finished_games(self, request):
+    def get_finished_games(self):
         """Get the cached number of games finished"""
         return StringMessage(message=memcache.get(MEMCACHE_GAMES_PLAYED) or '')
 
@@ -230,7 +230,7 @@ class TicTacToeApi(remote.Service):
                       path='user/ranking',
                       name='get_user_rankings',
                       http_method='GET')
-    def get_user_rankings(self, request):
+    def get_user_rankings(self):
         """Ranking the performance of each player based on their win/draw percentage"""
         users = User.query(User.totalGamePlayed > 0).fetch()
         users = sorted(users, key=lambda x: x.points, reverse=True)
@@ -251,4 +251,3 @@ class TicTacToeApi(remote.Service):
 
 
 api = endpoints.api_server([TicTacToeApi])
-y
